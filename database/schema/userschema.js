@@ -6,7 +6,7 @@ const userSchema = new Schema({
     password: String,
     avatar_img: { type: String, default: "" },
     createdAt: { type: Date, default: Date.now },
-    uptatedAt: { type: Date, default: Date.UTC },
+    uptatedAt: { type: Date, default: Date.now },
     currency_type: { type: String, default: "" },
 })
 
