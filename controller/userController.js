@@ -8,8 +8,8 @@ const createUser = async (req, res) => {
     const userInfo = { ...data, password: protectedPass }
     console.log(userInfo)
     try {
-        await userModel.create(userInfo)
-        res.status(201).send({ success: true })
+        const user = await userModel.create(userInfo)
+        res.status(201).send({ success: true, user })
     } catch (err) {
         console.log(err)
         res.status(500).send("Server error")
@@ -30,7 +30,14 @@ const loginUser = async (req, res) => {
     }
 }
 
+const changeCurrency = async (req, res) => {
+    body = req.body
+    try {
+        await userModel.findByIdAndUpdate()
+    } catch (err) {
 
+    }
+}
 
 
 module.exports = { createUser, loginUser }
