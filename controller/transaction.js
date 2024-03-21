@@ -23,4 +23,8 @@ const GetAll = async (req, res) => {
         res.status(500).send("Error")
     }
 }
+
+
+
+
 module.exports = { CreateTransaction, GetAll }
