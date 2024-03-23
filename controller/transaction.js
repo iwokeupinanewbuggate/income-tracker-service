@@ -27,26 +27,21 @@ const GetAll = async (req, res) => {
 const addNewCategory  =  async (req, res) => {
     try {
       const {category}  = req.body;
-  console.log(category)
-      // Validate the category (ensure it's not empty, etc.)
+ 
       if (!category) {
-        res.status(400).send({ error: 'Category is required' });
+        return res.status(400).send({ error: 'Category is required' });
 
       } else if (category.length < 0 ) {
-        res.status(400).send("Category cant be empty")
+       return res.status(400).send("Category cant be empty")
       }
-  
-      // Check if the category already exists
+
       const existingCategory = await transactionModel.findOne({ category });
       if (existingCategory) {
-     res.status(400).send({ error: 'Category already exists' });
+    return res.status(400).send({ error: 'Category already exists' });
       }
   
-      // Update the Mongoose schema dynamically (not recommended)
-      // This is just for demonstration purposes and is not recommended in a production environment
       transactionModel.schema.path('category').enumValues.push(category);
-  
-      // Respond with success
+
       res.json({ success: category });
     } catch (error) {
       console.error('Error adding category:', error);
