@@ -65,15 +65,17 @@ const editTransaction = async (req, res) => {
   const body = req.body;
   const transactionId = req.params.transactionId;
   try {
-    await factmodel.findByIdAndUpdate(transactionId, {
+    await transactionModel.findByIdAndUpdate(transactionId, {
       amount: body.amount,
       createdAt: body.date,
       transactionTitle: body.transactionTitle,
       note: body.note,
       category: body.category,
-      transactionType: body.transactionType
+      transactionType: body.transactionType,
     });
-    const uptatedTransaction = await transactionModel.findOne({ _id: transactionId });
+    const uptatedTransaction = await transactionModel.findOne({
+      _id: transactionId,
+    });
     res.status(200).send(uptatedTransaction);
   } catch (err) {
     res.status(500).send("Server Error");
@@ -85,5 +87,5 @@ module.exports = {
   GetAll,
   addNewCategory,
   deleteTransaction,
-  editTransaction
+  editTransaction,
 };
