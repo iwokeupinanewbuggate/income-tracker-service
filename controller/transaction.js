@@ -65,7 +65,7 @@ const editTransaction = async (req, res) => {
   const body = req.body;
   const transactionId = req.params.transactionId;
   try {
-    await transactionModel.findByIdAndUpdate(transactionId, {
+    const UptadedOne = await transactionModel.findByIdAndUpdate(transactionId, {
       amount: body.amount,
       createdAt: body.date,
       transactionTitle: body.transactionTitle,
@@ -73,10 +73,7 @@ const editTransaction = async (req, res) => {
       category: body.category,
       transactionType: body.transactionType,
     });
-    const uptatedTransaction = await transactionModel.findOne({
-      _id: transactionId,
-    });
-    res.status(200).send(uptatedTransaction);
+    res.status(200).send(UptadedOne);
   } catch (err) {
     res.status(500).send("Server Error");
   }

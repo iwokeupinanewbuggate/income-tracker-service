@@ -30,15 +30,7 @@ const loginUser = async (req, res) => {
     }
 }
 
-const changeCurrency = async (req, res) => {
-    body = req.body
-    id = req.params.userId
-    try {
-        await userModel.findByIdAndUpdate(id, currency_type)
-    } catch (err) {
 
-    }
-}
 
 
 module.exports = { createUser, loginUser }
