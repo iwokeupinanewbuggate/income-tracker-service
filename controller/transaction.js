@@ -5,8 +5,6 @@ const CreateTransaction = async (req, res) => {
 
   try {
     const newTransaction = await transactionModel.create(body);
-
-    console.log({ newTransaction });
     res.status(200).send(newTransaction);
   } catch (err) {
     console.log(err);
@@ -79,10 +77,20 @@ const editTransaction = async (req, res) => {
   }
 };
 
+const getMyRecords = async (req, res) => {
+  const userId = req.params.userId;
+  try {
+    const myRecords = await transactionModel.find({ userId: userId });
+    res.status(200).send(myRecords);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 module.exports = {
   CreateTransaction,
   GetAll,
   addNewCategory,
   deleteTransaction,
   editTransaction,
+  getMyRecords,
 };
