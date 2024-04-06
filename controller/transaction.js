@@ -2,7 +2,6 @@ const transactionModel = require("../database/schema/transaction");
 
 const CreateTransaction = async (req, res) => {
   const body = req.body;
-
   try {
     const newTransaction = await transactionModel.create(body);
     res.status(200).send(newTransaction);
