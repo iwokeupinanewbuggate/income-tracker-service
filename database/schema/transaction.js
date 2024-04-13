@@ -4,7 +4,7 @@ const transaction = new Schema({
   userId: String,
   category: {
     type: String,
-    enum: ["Bill", "Food", "Clothing", "Salaries", "Donation", "Gift", "Lend"],
+    enum: ["Bill", "Food", "Clothing", "Salaries", "Donation", "Gift", "Lend", "MicroTransaction", "accessories"],
   },
   transactionTitle: String,
   amount: Number,
