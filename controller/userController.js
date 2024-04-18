@@ -20,7 +20,7 @@ const loginUser = async (req, res) => {
   const user = await userModel.findOne({ email: body.email });
   try {
     if (user) {
-      res.status(200).send({ success: true, user });
+      res.status(200).send({  user });
     } else {
       res.status(404).send("User not found");
     }
